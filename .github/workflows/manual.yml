@@ -36,3 +36,21 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
+
+  meet:
+    needs: [greet]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Diskutieren
+      run: echo "Diskutieren"
+    
+    - name: Checkout
+      uses: actions/checkout@v2.5.0
+      
+  bye:
+    needs: [meet]
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Say bye
+        run: echo "Tschüss"
+  
